@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brovold & Company LLC — Real Estate Appraisal and Analysis</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson: #8B1A4A;
+      --crimson-dark: #6e1239;
+      --crimson-light: #a82259;
+      --white: #ffffff;
+      --off-white: #f9f5f6;
+      --light-gray: #ece4e7;
+      --text-dark: #2a1018;
+      --text-mid: #5a3040;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--crimson);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    .nav-brand {
+      color: var(--white);
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--crimson);
+      color: var(--white);
+      text-align: center;
+      padding: 6rem 2rem 5rem;
+      position: relative;
+    }
+
+    .hero-logo-box {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.6);
+      padding: 2.5rem 3.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .hero-logo-box::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(255,255,255,0.35);
+      pointer-events: none;
+    }
+
+    .hero-logo-box h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    .hero-logo-box .ampersand {
+      display: inline;
+    }
+
+    .hero-logo-box .llc {
+      font-size: 0.42em;
+      vertical-align: super;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-logo-box .tagline {
+      margin-top: 0.8rem;
+      font-size: clamp(0.65rem, 1.4vw, 0.85rem);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      border: 2px solid var(--white);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 2.2rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--white);
+      color: var(--crimson);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: normal;
+      color: var(--crimson-dark);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .divider {
+      width: 52px;
+      height: 2px;
+      background: var(--crimson);
+      margin-bottom: 2rem;
+    }
+
+    p {
+      color: var(--text-mid);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-top: 3px solid var(--crimson);
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 2px 10px rgba(139,26,74,0.07);
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--crimson-dark);
+      margin-bottom: 0.7rem;
+      font-weight: normal;
+    }
+
+    .service-card p {
+      font-size: 0.93rem;
+      margin: 0;
+    }
+
+    /* ── CREDENTIALS ── */
+    #credentials { background: var(--crimson); color: var(--white); }
+
+    #credentials .section-label { color: rgba(255,255,255,0.7); }
+    #credentials h2 { color: var(--white); }
+    #credentials .divider { background: rgba(255,255,255,0.5); }
+    #credentials p { color: rgba(255,255,255,0.85); }
+
+    .cred-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .cred-list li {
+      border-left: 3px solid rgba(255,255,255,0.5);
+      padding-left: 1rem;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.97rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .contact-item .label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+
+    .contact-item a, .contact-item span {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .contact-item a:hover { color: var(--crimson); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--crimson-dark);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    footer strong { color: rgba(255,255,255,0.85); }
+
+    /* ── RESPONSIVE NAV ── */
+    @media (max-width: 600px) {
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.74rem; }
+      .hero-logo-box { padding: 1.8rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">Brovold &amp; Company</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-logo-box">
+      <h1>Brovold <span class="ampersand">&amp;</span><br>Company <span class="llc">LLC</span></h1>
+      <p class="tagline">Real Estate Appraisal and Analysis</p>
+    </div>
+    <p class="hero-sub">Nearly 30 years of trusted commercial real estate appraisal expertise serving Southern Minnesota.</p>
+    <a class="hero-cta" href="#contact">Get in Touch</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About Us</p>
+      <h2>Experience You Can Rely On</h2>
+      <div class="divider"></div>
+      <p>Brovold &amp; Company LLC is a commercial real estate appraisal and analysis firm based in Mankato, Minnesota. With nearly three decades of experience, we provide credible, well-supported appraisal reports for a wide range of commercial properties throughout Southern Minnesota and beyond.</p>
+      <p>Our firm is led by <strong>Trevor L. Brovold, MAI</strong> — Principal and Senior Analyst — whose depth of experience and commitment to professional standards ensures every engagement is handled with precision and integrity.</p>
+      <p>The MAI designation, awarded by the Appraisal Institute, is recognized globally as a mark of excellence in real estate appraisal and is held by professionals who have demonstrated extensive knowledge of commercial property valuation.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <p class="section-label">What We Do</p>
+      <h2>Appraisal Services</h2>
+      <div class="divider"></div>
+      <p>We provide independent, objective appraisals and consulting services for a broad spectrum of commercial real estate needs.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Commercial Appraisals</h3>
+          <p>Comprehensive valuation of office, retail, industrial, and mixed-use properties for lending, sale, or estate purposes.</p>
+        </div>
+        <div class="service-card">
+          <h3>Market Analysis</h3>
+          <p>In-depth analysis of market conditions, trends, and comparable data to support sound real estate decisions.</p>
+        </div>
+        <div class="service-card">
+          <h3>Litigation Support</h3>
+          <p>Expert appraisal services and testimony for eminent domain, estate disputes, divorce proceedings, and other legal matters.</p>
+        </div>
+        <div class="service-card">
+          <h3>Consulting</h3>
+          <p>Advisory services for investors, developers, lenders, and government entities requiring independent real estate analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="container">
+      <p class="section-label">Qualifications</p>
+      <h2>Professional Credentials</h2>
+      <div class="divider"></div>
+      <p>Our principal appraiser holds some of the most respected designations in the commercial real estate appraisal profession.</p>
+      <ul class="cred-list">
+        <li><strong>MAI Designation</strong> — Appraisal Institute, the highest standard in commercial appraisal</li>
+        <li><strong>Principal &amp; Senior Analyst</strong> — Brovold &amp; Company LLC</li>
+        <li><strong>Nearly 30 Years Experience</strong> — Commercial real estate appraisal in Minnesota</li>
+        <li><strong>Southern Minnesota Focus</strong> — Deep regional market knowledge</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Reach Us</p>
+      <h2>Contact</h2>
+      <div class="divider"></div>
+      <p>Ready to discuss your appraisal or analysis needs? Reach out to Trevor directly.</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="label">Name &amp; Title</span>
+          <span>Trevor L. Brovold, MAI</span>
+          <span>Principal &amp; Senior Analyst</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:trevor.brovold@brovoldco.com">trevor.brovold@brovoldco.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Phone</span>
+          <a href="tel:+15073824666">(507) 382-4666</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Mailing Address</span>
+          <span>PO Box 713</span>
+          <span>Mankato, MN 56002</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Brovold &amp; Company LLC</strong> &nbsp;|&nbsp; Real Estate Appraisal and Analysis &nbsp;|&nbsp; Mankato, MN</p>
+    <p style="margin-top:0.4rem;">&copy; 2026 Brovold &amp; Company LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

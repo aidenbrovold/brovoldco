@@ -59,8 +59,21 @@
     .nav-links {
       list-style: none;
       display: flex;
+      align-items: center;
       gap: 2rem;
     }
+
+    .nav-phone {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      padding-right: 2rem;
+      transition: color 0.2s;
+    }
+
+    .nav-phone:hover { color: var(--white); }
 
     .nav-links a {
       color: rgba(255,255,255,0.9);
@@ -441,6 +454,7 @@
   <nav id="main-nav">
     <a class="nav-brand" href="#">Brovold &amp; Company</a>
     <ul class="nav-links">
+      <a class="nav-phone" href="tel:+15073824666">(507) 382-4666</a>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#credentials">Credentials</a></li>

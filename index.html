@@ -70,58 +70,24 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--crimson);
-      color: var(--white);
+      background: var(--white);
       text-align: center;
-      padding: 6rem 2rem 5rem;
+      padding: 5rem 2rem 4rem;
       position: relative;
     }
 
-    .hero-logo-box {
-      display: inline-block;
-      border: 2px solid rgba(255,255,255,0.6);
-      padding: 2.5rem 3.5rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .hero-logo-box::before {
-      content: '';
-      position: absolute;
-      inset: 6px;
-      border: 1px solid rgba(255,255,255,0.35);
-      pointer-events: none;
-    }
-
-    .hero-logo-box h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-weight: normal;
-      line-height: 1.1;
-    }
-
-    .hero-logo-box .ampersand {
-      display: inline;
-    }
-
-    .hero-logo-box .llc {
-      font-size: 0.42em;
-      vertical-align: super;
-      letter-spacing: 0.1em;
-    }
-
-    .hero-logo-box .tagline {
-      margin-top: 0.8rem;
-      font-size: clamp(0.65rem, 1.4vw, 0.85rem);
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      opacity: 0.9;
+    .hero-logo-img {
+      max-width: min(560px, 90vw);
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 6px 32px rgba(139,26,74,0.13);
     }
 
     .hero-sub {
       font-size: 1.05rem;
-      opacity: 0.85;
+      color: var(--text-mid);
       max-width: 560px;
       margin: 0 auto 2rem;
       letter-spacing: 0.03em;
@@ -129,7 +95,8 @@
 
     .hero-cta {
       display: inline-block;
-      border: 2px solid var(--white);
+      background: var(--crimson);
+      border: 2px solid var(--crimson);
       color: var(--white);
       text-decoration: none;
       padding: 0.75rem 2.2rem;
@@ -140,8 +107,33 @@
     }
 
     .hero-cta:hover {
-      background: var(--white);
-      color: var(--crimson);
+      background: var(--crimson-dark);
+      border-color: var(--crimson-dark);
+    }
+
+    /* ── FLOATING CONTACT BUTTON ── */
+    .float-contact {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      background: var(--crimson);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(139,26,74,0.35);
+      border-radius: 2px;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      font-family: 'Georgia', serif;
+    }
+
+    .float-contact:hover {
+      background: var(--crimson-dark);
+      box-shadow: 0 6px 24px rgba(139,26,74,0.45);
+      transform: translateY(-2px);
     }
 
     /* ── SECTIONS ── */
@@ -367,12 +359,12 @@
     </ul>
   </nav>
 
+  <!-- FLOATING CONTACT BUTTON -->
+  <a class="float-contact" href="#contact">✉ Contact Us</a>
+
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-logo-box">
-      <h1>Brovold <span class="ampersand">&amp;</span><br>Company <span class="llc">LLC</span></h1>
-      <p class="tagline">Real Estate Appraisal and Analysis</p>
-    </div>
+    <img class="hero-logo-img" src="logo.jpg" alt="Brovold & Company LLC — Real Estate Appraisal and Analysis" />
     <p class="hero-sub">Nearly 30 years of trusted commercial real estate appraisal expertise serving Southern Minnesota.</p>
     <a class="hero-cta" href="#contact">Get in Touch</a>
   </section>

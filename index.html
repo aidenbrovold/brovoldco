@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brovold & Company LLC — Real Estate Appraisal and Analysis</title>
+  <title>Brovold & Company LLC — Commercial Real Estate Appraisal | MAI Appraiser | Eminent Domain | Mankato, MN</title>
+  <meta name="description" content="Brovold & Company LLC provides expert commercial real estate appraisal, eminent domain valuation, agricultural land appraisal, and litigation support across Minnesota, Iowa, South Dakota, North Dakota, and Wisconsin. MAI designated appraiser with 30+ years of experience." />
+  <meta name="keywords" content="commercial appraisal, real estate appraisal, eminent domain, eminent domain appraisal, MAI appraiser, agricultural land appraisal, farmland appraisal, commercial real estate valuation, litigation support appraisal, expert witness appraisal, Mankato MN appraiser, Minnesota commercial appraiser, Iowa farmland appraisal, Upper Midwest appraisal, property valuation, condemnation appraisal, just compensation appraisal, office appraisal, retail appraisal, industrial appraisal, estate appraisal, divorce appraisal, tax appeal appraisal, Brovold Company" />
+  <meta name="author" content="Trevor L. Brovold, MAI" />
+  <meta property="og:title" content="Brovold & Company LLC — Commercial Real Estate Appraisal | MAI Appraiser" />
+  <meta property="og:description" content="Expert commercial real estate appraisal and eminent domain valuation across the Upper Midwest. MAI designated, 30+ years experience." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://brovoldco.com" />
+  <link rel="canonical" href="https://brovoldco.com" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -434,14 +442,97 @@
 
     footer strong { color: rgba(255,255,255,0.85); }
 
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 300;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: block;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.72rem; }
+      /* Nav */
+      nav { padding: 0 1.2rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        background: var(--crimson-dark);
+        padding: 1.5rem 2rem 2rem;
+        gap: 1.2rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li, .nav-phone { display: block; width: 100%; }
+      .nav-phone {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-right: 0;
+        padding-bottom: 1rem;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+      }
+      .nav-links a { font-size: 0.95rem; letter-spacing: 0.1em; }
+
+      /* Hero */
+      .hero-content { padding: 1.2rem; }
+      .hero-tagline { font-size: 0.78rem; letter-spacing: 0.14em; }
+      .hero-cta { padding: 0.7rem 1.8rem; }
+
+      /* Stats */
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .stat-number { font-size: 2rem; }
+
+      /* Sections */
+      section { padding: 3.5rem 1.2rem; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Gallery */
       .gallery-grid { grid-template-columns: 1fr 1fr; height: auto; }
-      .gallery-grid img { height: 160px; }
-      .contact-photo-wrap { flex-direction: column; align-items: center; text-align: center; }
+      .gallery-grid img { height: 130px; }
+
+      /* Credentials */
+      .cred-list { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-photo-wrap {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .contact-photo { width: 140px; height: 170px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* Float button */
+      .float-contact {
+        bottom: 1rem; right: 1rem;
+        padding: 0.75rem 1.2rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid img { height: 180px; }
     }
   </style>
 </head>
@@ -453,7 +544,10 @@
   <!-- NAV -->
   <nav id="main-nav">
     <a class="nav-brand" href="#">Brovold &amp; Company</a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <a class="nav-phone" href="tel:+15073824666">(507) 382-4666</a>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -514,19 +608,27 @@
       <div class="services-grid">
         <div class="service-card fade-in fade-in-delay-1">
           <h3>Commercial Appraisals</h3>
-          <p>Comprehensive valuation of office, retail, industrial, and mixed-use properties for lending, sale, or estate purposes.</p>
+          <p>Comprehensive commercial real estate appraisal for office, retail, industrial, hotel, and mixed-use properties. Trusted by lenders, investors, and attorneys for financing, sale, estate planning, and tax appeals.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-2">
-          <h3>Agricultural Land</h3>
-          <p>Expert valuation of farmland and agricultural properties throughout Minnesota, Iowa, South Dakota, North Dakota, and Wisconsin.</p>
+          <h3>Agricultural Land Appraisal</h3>
+          <p>Expert farmland and agricultural property valuation throughout Minnesota, Iowa, South Dakota, North Dakota, and Wisconsin. Covering row crop, pasture, specialty ag, and transitional land.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-3">
-          <h3>Litigation Support</h3>
-          <p>Expert appraisal services and testimony for eminent domain, estate disputes, divorce proceedings, and other legal matters.</p>
+          <h3>Eminent Domain &amp; Condemnation</h3>
+          <p>Specialized eminent domain appraisal and just compensation analysis for property owners and government agencies. Expert witness testimony and litigation support for condemnation proceedings.</p>
         </div>
         <div class="service-card fade-in fade-in-delay-4">
+          <h3>Litigation &amp; Legal Support</h3>
+          <p>Credible appraisal reports and expert witness services for divorce, estate disputes, partnership dissolutions, tax appeals, and eminent domain litigation. Trusted by attorneys and courts throughout the Upper Midwest.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-1">
+          <h3>Estate &amp; Probate Appraisal</h3>
+          <p>Date-of-death and retrospective appraisals for estate settlement, probate, and inheritance purposes. Accepted by the IRS and estate attorneys for accurate fair market value determinations.</p>
+        </div>
+        <div class="service-card fade-in fade-in-delay-2">
           <h3>Market Analysis &amp; Consulting</h3>
-          <p>Advisory services and in-depth market analysis for investors, developers, lenders, and government entities.</p>
+          <p>In-depth market analysis, feasibility studies, and advisory services for investors, developers, lenders, municipalities, and government entities making critical real estate decisions.</p>
         </div>
       </div>
     </div>
@@ -595,11 +697,17 @@
 
   <!-- FOOTER -->
   <footer>
-    <p><strong>Brovold &amp; Company LLC</strong> &nbsp;|&nbsp; Real Estate Appraisal and Analysis Real Estate Appraisal and Analysis &nbsp;|&nbsp; Mankato, MNnbsp;|Real Estate Appraisal and Analysis &nbsp;|&nbsp; Mankato, MNnbsp; Upper Midwest</p>
+    <p><strong>Brovold &amp; Company LLC</strong> &nbsp;|&nbsp; Commercial Real Estate Appraisal &amp; Analysis &nbsp;|&nbsp; Mankato, MN &nbsp;|&nbsp; Upper Midwest</p>
     <p style="margin-top:0.4rem;">&copy; 2026 Brovold &amp; Company LLC. All rights reserved.</p>
   </footer>
 
   <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
     // Nav background on scroll
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
